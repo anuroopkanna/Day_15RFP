@@ -2,7 +2,7 @@ package com.BridgeLabzDay15;
 
 public class BinarySearch<T extends Comparable<T>> {
     INode<T> root;
-    INode<T> currentPointer;
+
 //uc1
 public void add(T data){
     INode<T> newNode = new INode<>(data);
@@ -11,17 +11,32 @@ public void add(T data){
         return;
     }
     INode<T> currentPointer= root;
-    while(currentPointer.NextRN != null && currentPointer.NextLN != null) {
+    while(true) {
         if (data.compareTo(currentPointer.data) < 0) {
+            if(currentPointer.NextLN == null){
+                currentPointer.NextLN= newNode;
+                return;
+            }
             currentPointer = currentPointer.NextLN;
         } else {
+            if(currentPointer.NextRN == null){
+                currentPointer.NextRN= newNode;
+                return;
+            }
             currentPointer = currentPointer.NextRN;
         }
     }
-    if(data.compareTo(currentPointer.data) < 0)
-        currentPointer.NextLN= newNode;
-    else
-        currentPointer.NextRN= newNode;
 }
+    public void traverse(INode<T> currentPointer){
+        if (currentPointer == null)
+            return;
+        traverse(currentPointer.NextLN);
+        System.out.print(currentPointer.data+" ");
+        traverse(currentPointer.NextRN);
+    }
+
+    public void show(){
+        traverse(root);
+    }
 
 }
