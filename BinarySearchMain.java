@@ -16,7 +16,10 @@ public class BinarySearchMain {
         bsTree.add(3);
         bsTree.add(16);
         bsTree.add(63);
-        bsTree.show();
-
+        bsTree.search(bsTree.root,65);
+        bsTree.show(bsTree.root);
+        System.out.println();
+        bsTree.search(bsTree.root,3);
+        bsTree.show(bsTree.root);
     }
 }
